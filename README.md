@@ -50,9 +50,7 @@ To create a fork on GitHub is as easy as clicking the “fork” button on the r
 
 ## Project delivery
 
-To deliver this project you must follow the steps indicated in the document:
-
-- [Submitting a solution](https://www.notion.so/Submitting-a-solution-524dab1a71dd4b96903f26385e24cdb6)
+To deliver this project you must follow the steps indicated in "Submitting a Solution" page in your Student Handbook
 
 ## Resources
 
