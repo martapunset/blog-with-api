@@ -30,7 +30,7 @@ First of all you must fork this project into your GitHub account.
 
 To create a fork on GitHub is as easy as clicking the “fork” button on the repository page.
 
-<img src="https://docs.github.com/assets/images/help/repository/fork_button.jpg" alt="Fork on GitHub" width='450'>
+<img src="https://docs.github.com/assets/cb-23088/images/help/repository/fork_button.png" alt="Fork on GitHub" width='450'>
 
 ## Technologies used
 
