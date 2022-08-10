@@ -7,22 +7,22 @@
   http://localhost:3000
   */
 
-
-  fetch("http://localhost:3000/posts/2", {
-  method:"GET",
-})
-
-    .then(function(response){
-
-       return response.json();
-
-
-})
-.then(function(json){
-  console.log(json)
-  document.getElementById("h3").innerHTML=json.title;
-});
+function getFetch() {
+  for (let i = 0; i < 10; i++) {
+    fetch("http://localhost:3000/posts/")
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (posts) {
+        document.getElementById("h3").innerHTML = posts[i].title;
 
 
+
+      });
+  }
+}
+
+getFetch();
+//method: "GET",
 //console.log(fetch("http://localhost:3000/posts/1"))
-//console.log("hola");
+console.log("hola");
