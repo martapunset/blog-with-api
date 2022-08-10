@@ -14,3 +14,14 @@ var myInput = document.getElementById('myInput')
 myModal.addEventListener('shown.bs.modal', function () {
   myInput.focus()
 })
+
+fetch(" http://localhost:3000/posts", {
+  method:"GET",
+})
+.then(function(response){
+
+   return response.json();
+})
+.then(function(json){
+  console.log(json)
+});
