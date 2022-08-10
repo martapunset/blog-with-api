@@ -8,24 +8,21 @@
   */
 
 
-
- 
-
-
-
-
-/*
-, {
+  fetch("http://localhost:3000/posts/2", {
   method:"GET",
 })
-.then(function(response){
 
-   return response.json();
+    .then(function(response){
+
+       return response.json();
+
+
 })
 .then(function(json){
   console.log(json)
+  document.getElementById("h3").innerHTML=json.title;
 });
 
-*/
-console.log(fetch("http://localhost:3000/posts"))
-console.log("hola");
+
+//console.log(fetch("http://localhost:3000/posts/1"))
+//console.log("hola");
