@@ -5,3 +5,14 @@
 div{
     margin: 0 auto;
 }
+
+h3{
+    text-transform:capitalize;
+}
+
+.nav-link{
+color: brown;
+}
+ul.nav.nav-pills{
+    color: brown; 
+}

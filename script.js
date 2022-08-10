@@ -1,22 +1,20 @@
 
-
-
 function getFetch() {
   for (let i = 0; i < 10; i++) {
 
     let article = document.createElement("article");  //create article for 10 times
     article.className = "col";
     let container1 = document.getElementById("container1")
-    container1.appendChild(article); //add to div claas container1 
+    container1.appendChild(article);                  //add to div class container1 
 
 
     fetch("http://localhost:3000/posts/")
       .then(function (response) {
         return response.json();
 
-      })  //posts= all the entire posts list
+      })                                              //posts= all the entire posts list
       .then(function (posts) {
-        article.innerHTML=`<div class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        article.innerHTML = `<div class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
             <h5 id="h5">${posts[i].title}</h5> 
            <p>${posts[i].body}</p> 
            <i onclick="" type="button" class="fa-solid fa-trash-can"></i>  
