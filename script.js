@@ -1,3 +1,104 @@
+
+
+
+function getFetch() {
+  for (let i = 0; i < 10; i++) {
+
+    let article = document.createElement("article");  //create article for 10 times
+    article.className = "col";
+    let container1 = document.getElementById("container1")
+    container1.appendChild(article); //add to div claas container1 
+
+
+    fetch("http://localhost:3000/posts/")
+      .then(function (response) {
+        return response.json();
+
+      })  //posts= all the entire posts list
+      .then(function (posts) {
+        article.innerHTML=`<div class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <h5 id="h5">${posts[i].title}</h5> 
+           <p>${posts[i].body}</p> 
+           <i onclick="" type="button" class="fa-solid fa-trash-can"></i>  
+           <i onclick="" type="button" class="fa-solid fa-pen-to-square"></i>
+           
+</div> <hr>`
+        console.log(posts[i].title)
+
+      });
+  }
+}
+
+getFetch();
+//method: "GET",
+//console.log(fetch("http://localhost:3000/posts/1"))
+console.log("hola");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*Resources
   http://localhost:3000/posts
   http://localhost:3000/users
@@ -7,7 +108,9 @@
   http://localhost:3000
   */
 
-  const modal= `<!-- Button trigger modal -->
+
+
+const modal = `<!-- Button trigger modal -->
   <div class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
     <h3 id="h3">TITLE POST</h3>  <!-- InnerHTML loop -->
 </div>
@@ -30,31 +133,3 @@
   </div>
 </div>
 </div><hr>`
-
-function getFetch() {
-  for (let i = 0; i < 10; i++) {
-    //document.getElementById("post-container").insertAdjacentHTML("afterbegin", modal);  //insert adjacent element , inner html
-    //document.getElementById("post-container").innerHTML(modal);
-
-
-
-    fetch("http://localhost:3000/posts/")
-      .then(function (response) {
-        return response.json();
-        
-      })  //posts= all the entire posts list
-      .then(function (posts) {
-        document.getElementById("h3").innerHTML = posts[i].title;
-
-
-
-      });
-  }
-}
-
-getFetch();
-//method: "GET",
-//console.log(fetch("http://localhost:3000/posts/1"))
-console.log("hola");
-
-
