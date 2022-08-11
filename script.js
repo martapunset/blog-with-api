@@ -9,7 +9,7 @@
   
 
 
-
+/*
 const modalBueno=`<div class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop${i}">
 <h5 id="h5">${posts[i].title}</h5> </div>
 <i onclick="" type="button" class="fa-solid fa-trash-can"></i>  
@@ -39,7 +39,7 @@ const modalBueno=`<div class="btn" data-bs-toggle="modal" data-bs-target="#stati
   </div>
 </article>`;
 
-
+*/
 
 
 
@@ -52,20 +52,27 @@ function getFetch() {
 
       })                                              //posts= all the entire posts list
       .then(function (posts) {
+        let postsLength=posts.length;
 
-      
+        fetch("http://localhost:3000/users/")  //call to users database
+           .then(function (response) {
+              return response.json();
 
-            fetch("http://localhost:3000/users/")  //call to users database
-              .then(function (response) {
-                return response.json();
-
-            })                                              //posts= all the entire posts list
+          })                                              //posts= all the entire posts list
               .then(function (users) {
+                console.log(postsLength)
 
-                for (let i = 0; i < posts.length; i++) {
+                 for (let i = 0, j=0; i<postsLength; i++, j++) {
+                
+
+                  console.log(i+" "+j)
                  let article = document.createElement("article");  //create article for 10 times
                   article.className = "col";
                   container1.appendChild(article); //add to div claas container1 
+
+                  
+
+
                   article.innerHTML= `<div class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop${i}">
                   <h5 id="h5">${posts[i].title}</h5> </div>
                   <i onclick="" type="button" class="fa-solid fa-trash-can"></i>  
@@ -82,9 +89,9 @@ function getFetch() {
                           </div>
                           <div class="modal-body">
                           ${posts[i].body}
-                          <div>Username: ${users[i].username}</div>
+                          <div>Username: ${users[j].username}</div>
                           
-                          <div>Email: ${users[i].email}</div>
+                          <div>Email: ${users[j].email}</div>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Modify</button>
@@ -97,11 +104,12 @@ function getFetch() {
           
                 //console.log(username[0]);
                   //console.log(posts[i].title)
-              }}
-              )
+              }
+              
       }
-    )
-  }
+    
+  )})
+}
 
 
     
