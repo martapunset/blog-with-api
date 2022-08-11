@@ -6,8 +6,15 @@ function getFetch() {
 
     let article = document.createElement("article");  //create article for 10 times
     article.className = "col";
+
+
     let container1 = document.getElementById("container1")
     container1.appendChild(article); //add to div claas container1 
+
+    let modalTitle = document.createElementById("staticBackdropLabel");
+    staticBackdropLabel.appendChild(article);
+
+
 
 
     fetch("http://localhost:3000/posts/")
@@ -32,7 +39,7 @@ function getFetch() {
 getFetch();
 //method: "GET",
 //console.log(fetch("http://localhost:3000/posts/1"))
-console.log("hola");
+
 
 
 
