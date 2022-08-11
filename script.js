@@ -1,12 +1,17 @@
+let usernames=[];
+let emails=[]
+
+
+
+function getUsers(){
+  
+}
+
+
+
 
 function getFetch() {
-  for (let i = 0; i < 10; i++) {
-
-    let article = document.createElement("article");  //create article for 10 times
-    article.className = "col";
-    let container1 = document.getElementById("container1")
-    container1.appendChild(article);                  //add to div class container1 
-
+  
 
     fetch("http://localhost:3000/posts/")
       .then(function (response) {
@@ -14,6 +19,13 @@ function getFetch() {
 
       })                                              //posts= all the entire posts list
       .then(function (posts) {
+
+        for (let i = 0; i < 100; i++) {
+
+          let article = document.createElement("article");  //create article for 10 times
+          article.className = "col";
+          let container1 = document.getElementById("container1")
+          container1.appendChild(article);                  //add to div class container1 
         article.innerHTML = `<div class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
             <h5 id="h5">${posts[i].title}</h5> 
            <p>${posts[i].body}</p> 
@@ -22,10 +34,28 @@ function getFetch() {
            
 </div> <hr>`
         //console.log(posts[i].title)
+        }
+
+
+        fetch("http://localhost:3000/users/") //fetch de users
+        .then(function (response) {
+          return response.json();
+  
+        })                                              //posts= all the entire posts list
+        .then(function (users) {
+          for (let i = 0; i < users.length; i++) {
+          
+          usernames.push(users[i].username);
+          emails.push(users[i].emails);
+          //console.log(posts[i].title)
+          }
+  
+        });
+  
 
       });
   }
-}
+
 
 getFetch();
 //method: "GET",
@@ -33,7 +63,10 @@ getFetch();
 console.log("hola");
 
 
-
+let divPosts = document.createElement("div");
+            divPosts.setAttribute("id", "div-posts");
+            divPosts.setAttribute("data-bs-toggle", "modal");
+        //   divPosts.setAttribute("data-bs-target", #exampleModal${post.id});
 
 
 
