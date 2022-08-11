@@ -1,14 +1,45 @@
 
 
   let container1 = document.getElementById("container1")
+  let username=[], email=[];
+  
+
+
+
+const modalBueno=`<div class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop${i}">
+<h5 id="h5">${posts[i].title}</h5> </div>
+<i onclick="" type="button" class="fa-solid fa-trash-can"></i>  
+<i onclick="" type="button" class="fa-solid fa-pen-to-square"></i>
+<hr>
+
+
+<article class="modal fade" id="staticBackdrop${i}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">${posts[i].title}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        ${posts[i].body}
+        <div>Username: ${users[i].username}</div>
+        
+        <div>Email: ${users[i].email}</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Modify</button>
+          <button type="button" class="btn btn-primary">delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>`;
+
+
+
 
 
 function getFetch() {
-  for (let i = 0; i < 10; i++) {
-
-    let article = document.createElement("article");  //create article for 10 times
-    article.className = "col";
-    container1.appendChild(article); //add to div claas container1 
 
 
     fetch("http://localhost:3000/posts/")
@@ -17,36 +48,62 @@ function getFetch() {
 
       })                                              //posts= all the entire posts list
       .then(function (posts) {
-        article.innerHTML=`<div class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            <h5 id="h5">${posts[i].title}</h5> </div>
-           
-           <i onclick="" type="button" class="fa-solid fa-trash-can"></i>  
-           <i onclick="" type="button" class="fa-solid fa-pen-to-square"></i>
-           
- <hr>`
-        console.log(posts[i].title)
 
-      });
+        for (let i = 0; i < posts.length; i++) {
+
+            fetch("http://localhost:3000/users/")  //call to users database
+              .then(function (response) {
+                return response.json();
+
+            })                                              //posts= all the entire posts list
+              .then(function (users) {
+                 let article = document.createElement("article");  //create article for 10 times
+                  article.className = "col";
+                  container1.appendChild(article); //add to div claas container1 
+                  article.innerHTML= `<div class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop${i}">
+                  <h5 id="h5">${posts[i].title}</h5> </div>
+                  <i onclick="" type="button" class="fa-solid fa-trash-can"></i>  
+                  <i onclick="" type="button" class="fa-solid fa-pen-to-square"></i>
+                  <hr>
+                  
+                  
+                  <article class="modal fade" id="staticBackdrop${i}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">${posts[i].title}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                          ${posts[i].body}
+                          <div>Username: ${users[i].username}</div>
+                          
+                          <div>Email: ${users[i].email}</div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Modify</button>
+                            <button type="button" class="btn btn-primary">delete</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>`
+          
+                //console.log(username[0]);
+                  //console.log(posts[i].title)
+              })
+      }
+    })
   }
-}
+
+
+    
+
 
 getFetch();
 //method: "GET",
 //console.log(fetch("http://localhost:3000/posts/1"))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+console.log("hola");
 
 
 
