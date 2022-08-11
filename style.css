@@ -5,3 +5,8 @@
 div{
     margin: 0 auto;
 }
+
+article i{
+    float: right;
+    margin: 5px;
+}

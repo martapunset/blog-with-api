@@ -1,20 +1,16 @@
 
 
+  let container1 = document.getElementById("container1")
 
 function getFetch() {
   for (let i = 0; i < 10; i++) {
 
     let article = document.createElement("article");  //create article for 10 times
     article.className = "col";
-
-
-    let container1 = document.getElementById("container1")
     container1.appendChild(article); //add to div claas container1 
 
-    let modalTitle = document.createElementById("staticBackdropLabel");
+     let modalTitle = document.createElementbyId("staticBackdropLabel"); //esto falla es createElement sin el ID
     staticBackdropLabel.appendChild(article);
-
-
 
 
     fetch("http://localhost:3000/posts/")
@@ -24,12 +20,12 @@ function getFetch() {
       })  //posts= all the entire posts list
       .then(function (posts) {
         article.innerHTML=`<div class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            <h5 id="h5">${posts[i].title}</h5> 
-           <p>${posts[i].body}</p> 
+            <h5 id="h5">${posts[i].title}</h5> </div>
+           
            <i onclick="" type="button" class="fa-solid fa-trash-can"></i>  
            <i onclick="" type="button" class="fa-solid fa-pen-to-square"></i>
            
-</div> <hr>`
+ <hr>`
         console.log(posts[i].title)
 
       });
