@@ -16,3 +16,7 @@ color: brown;
 ul.nav.nav-pills{
     color: brown; 
 }
+article i{
+    float: right;
+    margin: 5px;
+}
