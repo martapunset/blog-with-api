@@ -2,7 +2,7 @@
 
   let container1 = document.getElementById("container1")
 
->>>>>>> develop
+
 function getFetch() {
   for (let i = 0; i < 10; i++) {
 
