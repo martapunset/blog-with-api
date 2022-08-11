@@ -2,6 +2,10 @@
 
   let container1 = document.getElementById("container1")
   let username=[], email=[];
+
+
+
+
   
 
 
@@ -49,7 +53,7 @@ function getFetch() {
       })                                              //posts= all the entire posts list
       .then(function (posts) {
 
-        for (let i = 0; i < posts.length; i++) {
+      
 
             fetch("http://localhost:3000/users/")  //call to users database
               .then(function (response) {
@@ -57,6 +61,8 @@ function getFetch() {
 
             })                                              //posts= all the entire posts list
               .then(function (users) {
+
+                for (let i = 0; i < posts.length; i++) {
                  let article = document.createElement("article");  //create article for 10 times
                   article.className = "col";
                   container1.appendChild(article); //add to div claas container1 
@@ -91,9 +97,10 @@ function getFetch() {
           
                 //console.log(username[0]);
                   //console.log(posts[i].title)
-              })
+              }}
+              )
       }
-    })
+    )
   }
 
 
@@ -104,7 +111,6 @@ getFetch();
 //method: "GET",
 //console.log(fetch("http://localhost:3000/posts/1"))
 console.log("hola");
-
 
 
 
