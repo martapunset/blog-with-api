@@ -6,6 +6,7 @@ div{
     margin: 0 auto;
 }
 
+<<<<<<< HEAD
 h3{
     text-transform:capitalize;
 }
@@ -20,3 +21,9 @@ article i{
     float: right;
     margin: 5px;
 }
+=======
+article i{
+    float: right;
+    margin: 5px;
+}
+>>>>>>> develop
