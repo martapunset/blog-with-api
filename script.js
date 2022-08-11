@@ -19,8 +19,9 @@ function getFetch() {
            <p>${posts[i].body}</p> 
            <i onclick="" type="button" class="fa-solid fa-trash-can"></i>  
            <i onclick="" type="button" class="fa-solid fa-pen-to-square"></i>
+           
 </div> <hr>`
-        console.log(posts[i].title)
+        //console.log(posts[i].title)
 
       });
   }
