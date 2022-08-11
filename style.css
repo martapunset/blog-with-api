@@ -6,6 +6,7 @@ div{
     margin: 0 auto;
 }
 
+
 h3{
     text-transform:capitalize;
 }
@@ -15,4 +16,13 @@ color: brown;
 }
 ul.nav.nav-pills{
     color: brown; 
+}
+article i{
+    float: right;
+    margin: 5px;
+}
+
+article i{
+    float: right;
+    margin: 5px;
 }
