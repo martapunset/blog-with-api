@@ -1,9 +1,8 @@
-
-
 let container1 = document.getElementById("container1")
 let username = [], email = [];
 let count = 0;
-
+let comments = "";
+//window.onload = getFetch();
 
 fetch("http://localhost:3000/users/")  //call to users database
   .then(function (response) {
@@ -17,22 +16,35 @@ fetch("http://localhost:3000/users/")  //call to users database
     }
   });
 
+function getComments(i) {  //is not working still
 
-
-function getFetch() {
-  fetch("http://localhost:3000/posts/")
+  fetch("http://localhost:3000/posts/${i}/comments")
     .then(response => {
       return response.json();
 
-    })                  //posts= all the entire posts list
-    .then(posts => {
+    })
+    .then(comments => {
+      return comments.body;
 
-      for (let i = 0; i < posts.length; i++) {
-        
-        let article = document.createElement("article");  //create article for 10 times
-        article.className = "col";
-        container1.appendChild(article); //add to div claas container1 
-        article.innerHTML = `<div class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop${i}">
+    })
+
+}
+
+//functions
+fetch("http://localhost:3000/posts/")
+  .then(response => {
+    return response.json();
+
+  })                  //posts= all the entire posts list
+  .then(posts => {
+    for (let i = 0; i < posts.length; i++) {
+
+      //posts= all the entire posts list
+
+      let article = document.createElement("article");  //create article for 10 times
+      article.className = "col";
+      container1.appendChild(article); //add to div claas container1 
+      article.innerHTML = `<div class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop${i}">
                   <h5 id="h5">${posts[i].title}</h5> </div>
                   <i onclick="" type="button" class="fa-solid fa-trash-can"></i>  
                   <i onclick="" type="button" class="fa-solid fa-pen-to-square"></i>
@@ -52,6 +64,7 @@ function getFetch() {
                              <div>Username: ${getUsername(i)}</div>
                               <div>Email: ${getEmail(i)}</div><hr>
                               <h5>Comments</h5>
+                               ${getComments(i)}
                           </div>
 
                           </div>
@@ -64,12 +77,10 @@ function getFetch() {
                     </div>
                     
                   </article>`
-      }
-    })
-}         
-window.onload = getFetch();
+    }
+  })
 
-console.log("hola");
+
 
 function getEmail(index) { //function to return posts email
   return email[index];
@@ -79,46 +90,6 @@ function getEmail(index) { //function to return posts email
 function getUsername(index) { //function to return posts username
   return username[index]
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -142,26 +113,3 @@ function getUsername(index) { //function to return posts username
 
 
 
-const modal = `<!-- Button trigger modal -->
-  <div class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-    <h3 id="h3">TITLE POST</h3>  <!-- InnerHTML loop -->
-</div>
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
-      </div>
-    </div>
-  </div>
-</div>
-</div><hr>`
